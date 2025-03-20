@@ -4,7 +4,7 @@
   "version": "1.0",
   "manifest_version": 3,
   "action": {
-    "default_popup": "index.html",
+    "default_popup": "popup.html",
     "default_icon": "images/icon-128.png"
   },
   "icons": {
@@ -13,5 +13,6 @@
     "48": "images/icon-48.png",
     "128": "images/icon-128.png"
   },
-  "permissions": ["activeTab"]
+  "permissions": ["activeTab", "storage"],
+  "options_page": "options.html"
 }
