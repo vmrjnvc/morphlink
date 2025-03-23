@@ -14,12 +14,25 @@ async function getCurrentTab() {
     return tab;
 }
 
+// get settings for regex from storage
+async function getOptionsAsync() {
+    return chrome.storage.sync.get(
+        { regExp: '' }
+    );
+}
+
 document.querySelector('#open-new-tab').addEventListener('click', async function() {
     const tab = await getCurrentTab();
-    console.log(tab);
+
+    const res = await getOptionsAsync();
+    const regexp = new RegExp(res.regExp);
+    console.log(regexp);
+    const morphedUrl = tab.url.replace(regexp, 'localhost:3000');
     chrome.tabs.create({
-        url: tab.url,
+        url: morphedUrl,
     });
 });
 
+
+document.addEventListener('DOMContentLoaded', getOptionsAsync);
 
