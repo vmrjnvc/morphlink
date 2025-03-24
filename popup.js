@@ -1,4 +1,4 @@
-document.querySelector('#go-to-options').addEventListener('click', function() {
+document.querySelector('#go-to-options').addEventListener('click', () => {
     if (chrome.runtime.openOptionsPage) {
         chrome.runtime.openOptionsPage();
     } else {
@@ -16,21 +16,19 @@ async function getCurrentTab() {
 
 // get settings for regex from storage
 async function getOptionsAsync() {
-    return chrome.storage.sync.get(
-        { regExp: '' }
-    );
+    return chrome.storage.sync.get(null);
 }
 
-document.querySelector('#open-new-tab').addEventListener('click', async function() {
+document.querySelector('#open-new-tab').addEventListener('click', async () => {
     const tab = await getCurrentTab();
-
     const res = await getOptionsAsync();
+    console.log(res);
     const regexp = new RegExp(res.regExp);
     console.log(regexp);
-    const morphedUrl = tab.url.replace(regexp, 'localhost:3000');
-    chrome.tabs.create({
-        url: morphedUrl,
-    });
+    // const morphedUrl = tab.url.replace(regexp, 'localhost:3000');
+    // chrome.tabs.create({
+    //     url: morphedUrl,
+    // });
 });
 
 

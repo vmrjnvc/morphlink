@@ -1,0 +1,5 @@
+#port-option::-webkit-outer-spin-button,
+#port-option::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+}

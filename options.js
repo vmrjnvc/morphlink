@@ -1,11 +1,26 @@
+const lhOption = document.getElementById('lh-option');
+const portOption = document.getElementById('port-option');
 
+// default values
+lhOption.checked = true;
+portOption.value = 3000;
+
+function togglePortAvailability() {
+    portOption.disabled = !lhOption.checked;
+}
+
+lhOption.addEventListener('change', () => {
+    togglePortAvailability()
+})
 
 // Saves options to chrome.storage
 const saveOptions = () => {
-    const inputValue = document.getElementById("regExp").value;
-
     chrome.storage.sync.set(
-        { regExp: inputValue },
+        {
+            lhOption: lhOption.checked,
+            portOption: portOption.value,
+            portDisabled: portOption.disabled
+        },
         () => {
             // Update status to let user know options were saved.
             const status = document.getElementById('status');
@@ -21,9 +36,26 @@ const saveOptions = () => {
 // stored in chrome.storage.
 const restoreOptions = () => {
     chrome.storage.sync.get(
-        { regExp: '' },
+        null,
         (items) => {
-            document.getElementById('regExp').value = items.regExp;
+            const itemsKeys = Object.keys(items);
+
+            if (itemsKeys.length) {
+                itemsKeys.forEach(key => {
+                    switch (key) {
+                        case 'lhOption':
+                            lhOption.checked = items.lhOption;
+                            break;
+                        case 'portOption':
+                            portOption.value = items.portOption;
+                            break;
+                        case 'portDisabled':
+                            portOption.disabled = items.portDisabled;
+                            break;
+                        default:
+                    }
+                })
+            }
         }
     );
 };

@@ -2,12 +2,21 @@
 <html>
     <head>
         <title>Morphlink - Options</title>
+        <link rel="stylesheet" href="options.css">
     </head>
     <body>
-        <label for="regExp">
-            Enter regexp
-            <input placeholder="RegExp" id="regExp" type="text">
-        </label>
+        <div class="options">
+            <div class="lh-option-container">
+                <label class="lh-option" for="lh-option">
+                    Localhost option
+                    <input id="lh-option" type="checkbox">
+                </label>
+                <label class="port-option" for="port-option">
+                    Enter port number:
+                    <input type="number" id="port-option" min="1" max="65535">
+                </label>
+            </div>
+        </div>
 
         <div id="status"></div>
         <button id="save">Save</button>
