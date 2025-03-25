@@ -1,3 +1,19 @@
+function getPathAfterDomain(urlString) {
+    try {
+
+        // create new URL object
+        const url = new URL(urlString);
+
+        // get pathname and query from URL object
+        const path = url.pathname;
+        const search = url.search;
+        return path + search;
+
+    } catch (error) {
+        console.error("Invalid URL:", error);
+    }
+}
+
 document.querySelector('#go-to-options').addEventListener('click', () => {
     if (chrome.runtime.openOptionsPage) {
         chrome.runtime.openOptionsPage();
@@ -19,16 +35,16 @@ async function getOptionsAsync() {
     return chrome.storage.sync.get(null);
 }
 
-document.querySelector('#open-new-tab').addEventListener('click', async () => {
+document.querySelector('#open-in-localhost').addEventListener('click', async () => {
+    let url = 'http://localhost:'
     const tab = await getCurrentTab();
     const res = await getOptionsAsync();
-    console.log(res);
-    const regexp = new RegExp(res.regExp);
-    console.log(regexp);
-    // const morphedUrl = tab.url.replace(regexp, 'localhost:3000');
-    // chrome.tabs.create({
-    //     url: morphedUrl,
-    // });
+    url += res.portOption;
+    url += getPathAfterDomain(tab.url);
+
+    chrome.tabs.create({
+        url,
+    });
 });
 
 
