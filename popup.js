@@ -1,18 +1,4 @@
-function getPathAfterDomain(urlString) {
-    try {
-
-        // create new URL object
-        const url = new URL(urlString);
-
-        // get pathname and query from URL object
-        const path = url.pathname;
-        const search = url.search;
-        return path + search;
-
-    } catch (error) {
-        console.error("Invalid URL:", error);
-    }
-}
+import { getPathAfterDomain } from "./utils.js";
 
 document.querySelector('#go-to-options').addEventListener('click', () => {
     if (chrome.runtime.openOptionsPage) {
