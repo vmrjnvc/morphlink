@@ -32,7 +32,7 @@ function saveOptions () {
             setStatus('Options saved')
         }
     );
-};
+}
 
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
@@ -60,7 +60,7 @@ function restoreOptions () {
             }
         }
     );
-};
+}
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.getElementById('save').addEventListener('click', saveOptions);
