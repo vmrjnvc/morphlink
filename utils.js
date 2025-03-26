@@ -1,4 +1,5 @@
 // constants
+const OPTIONS_PAGE = 'options.html'
 const LOCALHOST_URL = 'http://localhost:'
 
 // get everything after domain from url passed to func
@@ -15,6 +16,15 @@ export function getPathAfterDomain(urlString) {
 
     } catch (error) {
         console.error("Invalid URL:", error);
+    }
+}
+
+// open options page function
+export function openOptions () {
+    if (chrome.runtime.openOptionsPage) {
+        chrome.runtime.openOptionsPage();
+    } else {
+        window.open(chrome.runtime.getURL(OPTIONS_PAGE));
     }
 }
 
@@ -45,4 +55,14 @@ export async function openInLocalhost () {
     chrome.tabs.create({
         url,
     });
+}
+
+// Update status to let user know options were saved or not.
+export function setStatus (msg) {
+    const status = document.getElementById('status');
+
+    status.textContent = msg;
+    setTimeout(() => {
+        status.textContent = '';
+    }, 750);
 }

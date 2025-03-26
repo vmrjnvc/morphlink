@@ -1,3 +1,5 @@
+import { setStatus } from "./utils.js";
+
 const lhOption = document.getElementById('lh-option');
 const portOption = document.getElementById('port-option');
 
@@ -14,7 +16,12 @@ lhOption.addEventListener('change', () => {
 })
 
 // Saves options to chrome.storage
-const saveOptions = () => {
+function saveOptions () {
+    if (!Number(portOption.value)) {
+        setStatus('Invalid port value.');
+        restoreOptions();
+        return;
+    }
     chrome.storage.sync.set(
         {
             lhOption: lhOption.checked,
@@ -22,19 +29,14 @@ const saveOptions = () => {
             portDisabled: portOption.disabled
         },
         () => {
-            // Update status to let user know options were saved.
-            const status = document.getElementById('status');
-            status.textContent = 'Options saved.';
-            setTimeout(() => {
-                status.textContent = '';
-            }, 750);
+            setStatus('Options saved')
         }
     );
 };
 
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
-const restoreOptions = () => {
+function restoreOptions () {
     chrome.storage.sync.get(
         null,
         (items) => {
