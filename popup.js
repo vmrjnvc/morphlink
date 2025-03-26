@@ -1,6 +1,10 @@
 import { getOptionsAsync, openInLocalhost } from "./utils.js";
 
-document.querySelector('#go-to-options').addEventListener('click', () => {
+const optionsBtn = document.querySelector('#options-btn');
+const localhostBtn = document.querySelector('#localhost-btn');
+
+// handles open options button click
+optionsBtn.addEventListener('click', () => {
     if (chrome.runtime.openOptionsPage) {
         chrome.runtime.openOptionsPage();
     } else {
@@ -9,7 +13,7 @@ document.querySelector('#go-to-options').addEventListener('click', () => {
 });
 
 // handles click on open in localhost in new tab command
-document.querySelector('#open-in-localhost').addEventListener('click', openInLocalhost);
+localhostBtn.addEventListener('click', openInLocalhost);
 
 // load user options
 document.addEventListener('DOMContentLoaded', getOptionsAsync);
