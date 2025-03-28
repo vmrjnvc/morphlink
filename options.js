@@ -19,8 +19,8 @@ lhOptionEl.addEventListener('change', () => {
 })
 
 // add new command
-function addOption() {
-    const regexOption = createRegexOption();
+function addOption(restoredData) {
+    const regexOption = createRegexOption(restoredData);
     // console.log(regexOption);
     regexOptionsEl.appendChild(regexOption);
 }
@@ -50,7 +50,7 @@ function saveOptions () {
             lhOptionEl: lhOptionEl.checked,
             portOptionEl: portOptionEl.value,
             portDisabled: portOptionEl.disabled,
-            regexOption: regexOptionsData
+            regexOptions: regexOptionsData
         },
         () => {
             setStatus('Options saved')
@@ -78,6 +78,14 @@ function restoreOptions () {
                         case 'portDisabled':
                             portOptionEl.disabled = items.portDisabled;
                             break;
+
+                        case 'regexOptions': {
+                            console.log(items.regexOptions);
+                            items.regexOptions.forEach((regexOption) => {
+                                addOption(regexOption)
+                            })
+                            break;
+                        }
                         default:
                     }
                 })

@@ -20,7 +20,7 @@ export function getPathAfterDomain(urlString) {
 }
 
 // creates new regex option html element and returns it
-export function createRegexOption () {
+export function createRegexOption (restoredData) {
     // creates container
     const newEl = document.createElement('div');
     newEl.className = 'regex-option';
@@ -42,6 +42,11 @@ export function createRegexOption () {
     const regexValueInput = document.createElement('input');
     regexValueInput.id = 'regex-value__input';
     regexValueLabel.appendChild(regexValueInput);
+
+    if (restoredData) {
+        regexNameInput.value = restoredData.name;
+        regexValueInput.value = restoredData.value;
+    }
 
     newEl.appendChild(regexNameLabel);
     newEl.appendChild(regexValueLabel);
