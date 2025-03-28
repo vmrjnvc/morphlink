@@ -1,7 +1,10 @@
-import { setStatus } from "./utils.js";
+import { setStatus, createRegexOption } from "./utils.js";
 
-const lhOption = document.getElementById('lh-option');
-const portOption = document.getElementById('port-option');
+const save = document.getElementById("save");
+const add  = document.getElementById("add");
+const lhOption = document.getElementById('lh-input');
+const portOption = document.getElementById('port-input');
+const optionsContainer = document.getElementById('options');
 
 // default values
 lhOption.checked = true;
@@ -14,6 +17,13 @@ function togglePortAvailability() {
 lhOption.addEventListener('change', () => {
     togglePortAvailability()
 })
+
+// add new command
+function addOption() {
+    const regexOption = createRegexOption();
+
+    optionsContainer.appendChild(regexOption);
+}
 
 // Saves options to chrome.storage
 function saveOptions () {
@@ -63,4 +73,5 @@ function restoreOptions () {
 }
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
-document.getElementById('save').addEventListener('click', saveOptions);
+save.addEventListener('click', saveOptions);
+add.addEventListener('click', addOption);

@@ -19,6 +19,23 @@ export function getPathAfterDomain(urlString) {
     }
 }
 
+// creates new regex option html element and returns it
+export function createRegexOption () {
+    // creates container
+    const newEl = document.createElement('div');
+    newEl.className = 'regex-option';
+
+    const regexLabel = document.createElement('label');
+    regexLabel.setAttribute('for', 'regex-input');
+    regexLabel.innerHTML = 'Regex Input';
+    const regexInput = document.createElement('input');
+    regexInput.id = 'regex-input';
+    regexLabel.appendChild(regexInput);
+
+    newEl.appendChild(regexLabel);
+    return newEl;
+}
+
 // open options page function
 export function openOptions () {
     if (chrome.runtime.openOptionsPage) {

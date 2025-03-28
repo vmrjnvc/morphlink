@@ -4,18 +4,20 @@
         <link rel="stylesheet" href="options.css">
     </head>
     <body>
-        <div class="options">
-            <div class="lh-option-container">
-                <label class="lh-option" for="lh-option">
+        <div id="options">
+            <div class="lh-option">
+                <label class="hostname-option" for="lh-input">
                     Localhost option
-                    <input id="lh-option" type="checkbox">
+                    <input id="lh-input" type="checkbox">
                 </label>
-                <label class="port-option" for="port-option">
+                <label class="port-option" for="port-input">
                     Enter port number:
-                    <input type="number" id="port-option" min="1" max="65535">
+                    <input type="number" id="port-input" min="1" max="65535">
                 </label>
             </div>
         </div>
+
+        <button id="add">Add new Regex rule</button>
 
         <div id="status"></div>
         <button id="save">Save</button>
