@@ -1,42 +1,56 @@
 import { setStatus, createRegexOption } from "./utils.js";
 
-const save = document.getElementById("save");
-const add  = document.getElementById("add");
-const lhOption = document.getElementById('lh-input');
-const portOption = document.getElementById('port-input');
-const regexOptions = document.querySelector('.regex-options');
+const saveBtn = document.getElementById("save");
+const addBtn  = document.getElementById("add");
+const lhOptionEl = document.getElementById('lh-input');
+const portOptionEl = document.getElementById('port-input');
+const regexOptionsEl = document.querySelector('.regex-options');
 
 // default values
-lhOption.checked = true;
-portOption.value = 3000;
+lhOptionEl.checked = true;
+portOptionEl.value = 3000;
 
 function togglePortAvailability() {
-    portOption.disabled = !lhOption.checked;
+    portOptionEl.disabled = !lhOptionEl.checked;
 }
 
-lhOption.addEventListener('change', () => {
+lhOptionEl.addEventListener('change', () => {
     togglePortAvailability()
 })
 
 // add new command
 function addOption() {
     const regexOption = createRegexOption();
-    console.log(regexOption);
-    regexOptions.appendChild(regexOption);
+    // console.log(regexOption);
+    regexOptionsEl.appendChild(regexOption);
+}
+
+function getRegexOptionsData () {
+    const childElements = regexOptionsEl.children;
+    const regexOptionsArr = [];
+    for (let i = 0; i < childElements.length; i++) {
+        const child = childElements[i];
+        const [name, value] = child.querySelectorAll('input');
+        regexOptionsArr.push({name: name.value, value: value.value});
+    }
+
+    return regexOptionsArr;
 }
 
 // Saves options to chrome.storage
 function saveOptions () {
-    if (!Number(portOption.value)) {
+    if (!Number(portOptionEl.value)) {
         setStatus('Invalid port value.');
         restoreOptions();
         return;
     }
+    const regexOptionsData = getRegexOptionsData()
     chrome.storage.sync.set(
         {
-            lhOption: lhOption.checked,
-            portOption: portOption.value,
-            portDisabled: portOption.disabled
+            lhOptionEl: lhOptionEl.checked,
+            portOptionEl: portOptionEl.value,
+            portDisabled: portOptionEl.disabled,
+            regexOption: regexOptionsData
         },
         () => {
             setStatus('Options saved')
@@ -55,14 +69,14 @@ function restoreOptions () {
             if (itemsKeys.length) {
                 itemsKeys.forEach(key => {
                     switch (key) {
-                        case 'lhOption':
-                            lhOption.checked = items.lhOption;
+                        case 'lhOptionEl':
+                            lhOptionEl.checked = items.lhOptionEl;
                             break;
-                        case 'portOption':
-                            portOption.value = items.portOption;
+                        case 'portOptionEl':
+                            portOptionEl.value = items.portOptionEl;
                             break;
                         case 'portDisabled':
-                            portOption.disabled = items.portDisabled;
+                            portOptionEl.disabled = items.portDisabled;
                             break;
                         default:
                     }
@@ -73,5 +87,5 @@ function restoreOptions () {
 }
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
-save.addEventListener('click', saveOptions);
-add.addEventListener('click', addOption);
+saveBtn.addEventListener('click', saveOptions);
+addBtn.addEventListener('click', addOption);
