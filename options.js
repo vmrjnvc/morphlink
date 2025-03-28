@@ -4,7 +4,7 @@ const save = document.getElementById("save");
 const add  = document.getElementById("add");
 const lhOption = document.getElementById('lh-input');
 const portOption = document.getElementById('port-input');
-const optionsContainer = document.getElementById('options');
+const regexOptions = document.querySelector('.regex-options');
 
 // default values
 lhOption.checked = true;
@@ -21,8 +21,8 @@ lhOption.addEventListener('change', () => {
 // add new command
 function addOption() {
     const regexOption = createRegexOption();
-
-    optionsContainer.appendChild(regexOption);
+    console.log(regexOption);
+    regexOptions.appendChild(regexOption);
 }
 
 // Saves options to chrome.storage

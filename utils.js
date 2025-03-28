@@ -25,14 +25,27 @@ export function createRegexOption () {
     const newEl = document.createElement('div');
     newEl.className = 'regex-option';
 
-    const regexLabel = document.createElement('label');
-    regexLabel.setAttribute('for', 'regex-input');
-    regexLabel.innerHTML = 'Regex Input';
-    const regexInput = document.createElement('input');
-    regexInput.id = 'regex-input';
-    regexLabel.appendChild(regexInput);
+    // create input field for regex name
+    const regexNameLabel = document.createElement('label');
+    regexNameLabel.id = 'regex-name__label'
+    regexNameLabel.setAttribute('for', 'regex-name__input');
+    regexNameLabel.innerHTML = 'Regex Name';
+    const regexNameInput = document.createElement('input');
+    regexNameInput.id = 'regex-name__input';
+    regexNameLabel.appendChild(regexNameInput);
 
-    newEl.appendChild(regexLabel);
+    // create input field for regex value
+    const regexValueLabel = document.createElement('label');
+    regexValueLabel.id = 'regex-value__label'
+    regexValueLabel.setAttribute('for', 'regex-value__input');
+    regexValueLabel.innerHTML = 'Regex Value';
+    const regexValueInput = document.createElement('input');
+    regexValueInput.id = 'regex-value__input';
+    regexValueLabel.appendChild(regexValueInput);
+
+    newEl.appendChild(regexNameLabel);
+    newEl.appendChild(regexValueLabel);
+    console.log(newEl);
     return newEl;
 }
 
