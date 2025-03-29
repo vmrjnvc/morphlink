@@ -20,38 +20,57 @@ export function getPathAfterDomain(urlString) {
 }
 
 // creates new regex option html element and returns it
-export function createRegexOption (restoredData) {
+export function createRegexOption (restoredData = {}) {
     // creates container
     const newEl = document.createElement('div');
     newEl.className = 'regex-option';
 
     // create input field for regex name
-    const regexNameLabel = document.createElement('label');
-    regexNameLabel.id = 'regex-name__label'
-    regexNameLabel.setAttribute('for', 'regex-name__input');
-    regexNameLabel.innerHTML = 'Regex Name';
-    const regexNameInput = document.createElement('input');
-    regexNameInput.id = 'regex-name__input';
-    regexNameLabel.appendChild(regexNameInput);
+    const nameLabel = document.createElement('label');
+    nameLabel.id = 'name__label'
+    nameLabel.setAttribute('for', 'name__input');
+    nameLabel.innerHTML = 'Name';
+    const nameInput = document.createElement('input');
+    nameInput.id = 'name__input';
+    nameLabel.appendChild(nameInput);
 
     // create input field for regex value
-    const regexValueLabel = document.createElement('label');
-    regexValueLabel.id = 'regex-value__label'
-    regexValueLabel.setAttribute('for', 'regex-value__input');
-    regexValueLabel.innerHTML = 'Regex Value';
-    const regexValueInput = document.createElement('input');
-    regexValueInput.id = 'regex-value__input';
-    regexValueLabel.appendChild(regexValueInput);
+    const regexLabel = document.createElement('label');
+    regexLabel.id = 'regex__label'
+    regexLabel.setAttribute('for', 'regex__input');
+    regexLabel.innerHTML = 'Regex';
+    const regexInput = document.createElement('input');
+    regexInput.id = 'regex__input';
+    regexLabel.appendChild(regexInput);
+
+    // create input field for regex value
+    const replaceLabel = document.createElement('label');
+    replaceLabel.id = 'replace__label'
+    replaceLabel.setAttribute('for', 'replace__input');
+    replaceLabel.innerHTML = 'Replace';
+    const replaceInput = document.createElement('input');
+    replaceInput.id = 'replace__input';
+    replaceLabel.appendChild(replaceInput);
 
     if (restoredData) {
-        regexNameInput.value = restoredData.name;
-        regexValueInput.value = restoredData.value;
+        nameInput.value = restoredData['name'];
+        regexInput.value = restoredData['value'];
+        replaceInput.value = restoredData['replace'];
     }
 
-    newEl.appendChild(regexNameLabel);
-    newEl.appendChild(regexValueLabel);
-    console.log(newEl);
+    newEl.appendChild(nameLabel);
+    newEl.appendChild(regexLabel);
+    newEl.appendChild(replaceLabel);
+
     return newEl;
+}
+
+export function createRegexCommand (name) {
+    const btn = document.createElement('button');
+    btn.className = 'regex-command';
+    btn.innerHTML = name;
+
+    return btn;
 }
 
 // open options page function
