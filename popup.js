@@ -1,4 +1,4 @@
-import {openOptions, getOptionsAsync, openInLocalhost, createRegexCommand} from "./utils.js";
+import {openOptions, getOptionsAsync, openInLocalhost, createRegexCommand, executeRegexCommand} from "./utils.js";
 
 // html elements
 const optionsBtn = document.querySelector('#options-btn');
@@ -22,7 +22,9 @@ const regexCommands = await getRegexCommands();
 // create buttons for regex commands and insert them in DOM
 regexCommands.forEach(cmd => {
     const regexCommand = createRegexCommand(cmd.name);
-
+    regexCommand.addEventListener('click', () => {
+        executeRegexCommand(cmd['regex'], cmd['replace']);
+    })
     regexCommandsContainerEl.appendChild(regexCommand);
 })
 console.log(regexCommands);

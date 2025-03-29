@@ -54,7 +54,7 @@ export function createRegexOption (restoredData = {}) {
 
     if (restoredData) {
         nameInput.value = restoredData['name'];
-        regexInput.value = restoredData['value'];
+        regexInput.value = restoredData['regex'];
         replaceInput.value = restoredData['replace'];
     }
 
@@ -105,6 +105,17 @@ export async function openInLocalhost () {
     // creates url from localhost constant, port value from user options and active tab following the domain
     const url = LOCALHOST_URL + res.portOption + getPathAfterDomain(tab.url);
 
+    // creates new tab
+    chrome.tabs.create({
+        url,
+    });
+}
+
+export async function executeRegexCommand (regexVal, replaceVal) {
+    const tab = await getCurrentTab();
+
+    const url = tab.url.replace(new RegExp(regexVal), replaceVal);
+    console.log(regexVal, replaceVal);
     // creates new tab
     chrome.tabs.create({
         url,

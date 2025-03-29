@@ -30,8 +30,8 @@ function getRegexOptionsData () {
     const regexOptionsArr = [];
     for (let i = 0; i < childElements.length; i++) {
         const child = childElements[i];
-        const [name, value, replace] = child.querySelectorAll('input');
-        regexOptionsArr.push({name: name.value, value: value.value, replace: replace.value});
+        const [name, regex, replace] = child.querySelectorAll('input');
+        regexOptionsArr.push({name: name.value, regex: regex.value, replace: replace.value});
     }
 
     return regexOptionsArr;
