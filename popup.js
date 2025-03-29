@@ -9,6 +9,4 @@ optionsBtn.addEventListener('click', openOptions);
 // handles click on open in localhost in new tab command
 localhostBtn.addEventListener('click', openInLocalhost);
 
-// load user options
-document.addEventListener('DOMContentLoaded', getOptionsAsync);
 

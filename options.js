@@ -47,8 +47,8 @@ function saveOptions () {
     const regexOptionsData = getRegexOptionsData()
     chrome.storage.sync.set(
         {
-            lhOptionEl: lhOptionEl.checked,
-            portOptionEl: portOptionEl.value,
+            lhOption: lhOptionEl.checked,
+            portOption: portOptionEl.value,
             portDisabled: portOptionEl.disabled,
             regexOptions: regexOptionsData
         },
@@ -69,18 +69,17 @@ function restoreOptions () {
             if (itemsKeys.length) {
                 itemsKeys.forEach(key => {
                     switch (key) {
-                        case 'lhOptionEl':
-                            lhOptionEl.checked = items.lhOptionEl;
+                        case 'lhOption':
+                            lhOptionEl.checked = items.lhOption;
                             break;
-                        case 'portOptionEl':
-                            portOptionEl.value = items.portOptionEl;
+                        case 'portOption':
+                            portOptionEl.value = items.portOption;
                             break;
                         case 'portDisabled':
                             portOptionEl.disabled = items.portDisabled;
                             break;
 
                         case 'regexOptions': {
-                            console.log(items.regexOptions);
                             items.regexOptions.forEach((regexOption) => {
                                 addOption(regexOption)
                             })
