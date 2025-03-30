@@ -27,4 +27,9 @@ regexCommands.forEach(cmd => {
     })
     regexCommandsContainerEl.appendChild(regexCommand);
 })
-console.log(regexCommands);
+
+chrome.commands.getAll((commands) => {
+    commands.forEach(command => {
+        console.log(`Command: ${command.name}, Shortcut: ${command.shortcut}`);
+    });
+});

@@ -1,9 +1,30 @@
 <html lang="en">
+  <head>
+    <title>Morphlink - Transfrom URL as you want and open morphed link in new tab</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
   <body>
-    <h1>Hello Morphlink</h1>
-    <button id="options-btn">Go to options page</button>
-    <button id="localhost-btn">Open in localhost</button>
-    <div class="regex-commands"></div>
-    <script type="module" src="popup.js"></script>
+    <div class="popup">
+      <h1 class="title">Morphlink</h1>
+
+      <div class="wrapper">
+        <div class="commands">
+        <span class="commands-label">
+          Commands
+        </span>
+          <div class="commands-wrapper">
+            <button id="localhost-btn">Localhost</button>
+            <div class="regex-commands"></div>
+          </div>
+        </div>
+        <div class="shortcuts">
+        <span class="shortcuts-label">
+          Shortcuts <sup title="You can change shortcuts in extension settings.">&#9432;</sup>
+        </span>
+        </div>
+      </div>
+      <button id="options-btn">Options</button>
+      <script type="module" src="popup.js"></script>
+    </div>
   </body>
 </html>
