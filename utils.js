@@ -68,6 +68,7 @@ export function createRegexOption (restoredData = {}) {
 export function createRegexCommand (name) {
     const btn = document.createElement('button');
     btn.className = 'regex-command';
+    btn.classList.add('command-btn');
     btn.innerHTML = name;
 
     return btn;

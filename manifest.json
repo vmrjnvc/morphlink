@@ -26,6 +26,9 @@
         "mac": "Command+Shift+L"
       },
       "description": "Open current tab in localhost mode"
+    },
+    "regex-one": {
+      "description": "Run first custom regex command"
     }
   },
   "background": {
