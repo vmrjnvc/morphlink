@@ -25,37 +25,33 @@ export function createRegexOption (restoredData = {}) {
     const newEl = document.createElement('div');
     newEl.className = 'regex-option';
 
-    // create input field for regex name
-    const nameLabel = document.createElement('label');
-    nameLabel.id = 'name__label'
-    nameLabel.setAttribute('for', 'name__input');
-    nameLabel.innerHTML = 'Name';
-    const nameInput = document.createElement('input');
-    nameInput.id = 'name__input';
-    nameLabel.appendChild(nameInput);
+    function createField (name) {
+        const label = document.createElement('label');
+        label.id = `${name}__label`
+        label.setAttribute('for', `${name}__input`);
+        label.innerHTML = name;
+        const input = document.createElement('input');
+        input.id = `${name}__input`;
+        label.appendChild(input);
+        return label;
+    }
 
-    // create input field for regex value
-    const regexLabel = document.createElement('label');
-    regexLabel.id = 'regex__label'
-    regexLabel.setAttribute('for', 'regex__input');
-    regexLabel.innerHTML = 'Regex';
-    const regexInput = document.createElement('input');
-    regexInput.id = 'regex__input';
-    regexLabel.appendChild(regexInput);
+    const removeOptionBtn = document.createElement('button');
+    removeOptionBtn.id = 'remove-option-btn';
+    removeOptionBtn.innerHTML = 'Remove';
+    removeOptionBtn.addEventListener('click', () => {
+    })
 
-    // create input field for regex value
-    const replaceLabel = document.createElement('label');
-    replaceLabel.id = 'replace__label'
-    replaceLabel.setAttribute('for', 'replace__input');
-    replaceLabel.innerHTML = 'Replace';
-    const replaceInput = document.createElement('input');
-    replaceInput.id = 'replace__input';
-    replaceLabel.appendChild(replaceInput);
+    const nameLabel = createField('name')
+    const regexLabel = createField('regex')
+    const replaceLabel = createField('replace')
 
+    // populate input values if restoredData exists
     if (restoredData) {
-        nameInput.value = restoredData['name'];
-        regexInput.value = restoredData['regex'];
-        replaceInput.value = restoredData['replace'];
+        const { name, regex, replace } = restoredData;
+        nameLabel.querySelector('input').value = name || '';
+        regexLabel.querySelector('input').value = regex || '';
+        replaceLabel.querySelector('input').value = replace || '';
     }
 
     newEl.appendChild(nameLabel);
