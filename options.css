@@ -1,3 +1,4 @@
+/*  remove steps from input number field  */
 #port-input::-webkit-outer-spin-button,
 #port-input::-webkit-inner-spin-button {
     appearance: none;

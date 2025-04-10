@@ -10,6 +10,8 @@ const regexOptionsEl = document.querySelector('.regex-options');
 lhOptionEl.checked = true;
 portOptionEl.value = 3000;
 
+let lastItemId;
+
 function togglePortAvailability() {
     portOptionEl.disabled = !lhOptionEl.checked;
 }
@@ -20,7 +22,7 @@ lhOptionEl.addEventListener('change', () => {
 
 // add new command
 function addOption(restoredData) {
-    const regexOption = createRegexOption(restoredData);
+    const regexOption = createRegexOption(restoredData, lastItemId);
     // console.log(regexOption);
     regexOptionsEl.appendChild(regexOption);
 }
@@ -31,8 +33,10 @@ function getRegexOptionsData () {
     for (let i = 0; i < childElements.length; i++) {
         const child = childElements[i];
         const [name, regex, replace] = child.querySelectorAll('input');
-        regexOptionsArr.push({name: name.value, regex: regex.value, replace: replace.value});
+        regexOptionsArr.push({name: name.value, regex: regex.value, replace: replace.value, id: i + 1});
     }
+
+    lastItemId = childElements.length;
 
     return regexOptionsArr;
 }
@@ -81,7 +85,7 @@ function restoreOptions () {
 
                         case 'regexOptions': {
                             items.regexOptions.forEach((regexOption) => {
-                                addOption(regexOption)
+                                addOption(regexOption);
                             })
                             break;
                         }

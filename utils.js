@@ -19,44 +19,48 @@ export function getPathAfterDomain(urlString) {
     }
 }
 
+// creates input field with label
+function createInputField (name) {
+    const label = document.createElement('label');
+    label.id = `${name}__label`
+    label.setAttribute('for', `${name}__input`);
+    label.innerHTML = name;
+    const input = document.createElement('input');
+    input.id = `${name}__input`;
+    label.appendChild(input);
+    return label;
+}
+
+function createRemoveButton (optionItemId) {
+    const btn = document.createElement('button');
+    btn.className = 'remove-option__btn';
+    btn.innerHTML = 'Remove';
+    btn.addEventListener('click', () => {
+        console.log('clicked');
+    })
+}
+
 // creates new regex option html element and returns it
-export function createRegexOption (restoredData = {}) {
+export function createRegexOption (restoredData = {}, lastItemId) {
     // creates container
     const newEl = document.createElement('div');
     newEl.className = 'regex-option';
-
-    function createField (name) {
-        const label = document.createElement('label');
-        label.id = `${name}__label`
-        label.setAttribute('for', `${name}__input`);
-        label.innerHTML = name;
-        const input = document.createElement('input');
-        input.id = `${name}__input`;
-        label.appendChild(input);
-        return label;
-    }
-
-    const removeOptionBtn = document.createElement('button');
-    removeOptionBtn.id = 'remove-option-btn';
-    removeOptionBtn.innerHTML = 'Remove';
-    removeOptionBtn.addEventListener('click', () => {
-    })
-
-    const nameLabel = createField('name')
-    const regexLabel = createField('regex')
-    const replaceLabel = createField('replace')
+    console.log(lastItemId);
+    const nameInput = createInputField('name')
+    const regexInput = createInputField('regex')
+    const replaceInput = createInputField('replace')
 
     // populate input values if restoredData exists
     if (restoredData) {
         const { name, regex, replace } = restoredData;
-        nameLabel.querySelector('input').value = name || '';
-        regexLabel.querySelector('input').value = regex || '';
-        replaceLabel.querySelector('input').value = replace || '';
+        nameInput.querySelector('input').value = name || '';
+        regexInput.querySelector('input').value = regex || '';
+        replaceInput.querySelector('input').value = replace || '';
     }
 
-    newEl.appendChild(nameLabel);
-    newEl.appendChild(regexLabel);
-    newEl.appendChild(replaceLabel);
+    newEl.appendChild(nameInput);
+    newEl.appendChild(regexInput);
+    newEl.appendChild(replaceInput);
 
     return newEl;
 }
