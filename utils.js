@@ -22,7 +22,7 @@ export function getPathAfterDomain(urlString) {
 // creates input field with label
 function createInputField (name) {
     const label = document.createElement('label');
-    label.id = `${name}__label`
+    label.id = `${name}__label`;
     label.setAttribute('for', `${name}__input`);
     label.innerHTML = name;
     const input = document.createElement('input');
@@ -31,24 +31,29 @@ function createInputField (name) {
     return label;
 }
 
-function createRemoveButton (optionItemId) {
+function createDeleteButton () {
     const btn = document.createElement('button');
-    btn.className = 'remove-option__btn';
-    btn.innerHTML = 'Remove';
-    btn.addEventListener('click', () => {
-        console.log('clicked');
+    btn.className = 'delete-option__btn';
+    btn.innerHTML = 'Delete';
+    btn.addEventListener('click', (event) => {
+        const regex = event.target.parentElement;
+        if (regex) {
+            regex.remove();
+        }
     })
+
+    return btn;
 }
 
 // creates new regex option html element and returns it
-export function createRegexOption (restoredData = {}, lastItemId) {
+export function createRegexOption (restoredData = {}) {
     // creates container
     const newEl = document.createElement('div');
     newEl.className = 'regex-option';
-    console.log(lastItemId);
-    const nameInput = createInputField('name')
-    const regexInput = createInputField('regex')
-    const replaceInput = createInputField('replace')
+    const nameInput = createInputField('name');
+    const regexInput = createInputField('regex');
+    const replaceInput = createInputField('replace');
+    const deleteBtn = createDeleteButton();
 
     // populate input values if restoredData exists
     if (restoredData) {
@@ -61,6 +66,7 @@ export function createRegexOption (restoredData = {}, lastItemId) {
     newEl.appendChild(nameInput);
     newEl.appendChild(regexInput);
     newEl.appendChild(replaceInput);
+    newEl.appendChild(deleteBtn);
 
     return newEl;
 }
