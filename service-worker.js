@@ -1,9 +1,18 @@
-import { openInLocalhost } from "./utils.js";
+import {openInLocalhost, executeRegexCommand, getOptionsAsync} from "./utils.js";
 
-chrome.commands.onCommand.addListener((command) => {
+chrome.commands.onCommand.addListener(async (command) => {
     switch (command) {
         case 'run-localhost':
             openInLocalhost();
+            break;
+        default:
+            const options = await getOptionsAsync();
+            const regexCommandNum = Number(command.split('-')[1]);
+            const regexOption = options.regexOptions?.[regexCommandNum];
+            if (regexOption) {
+                const {regex, replace} = regexOption;
+                executeRegexCommand(regex, replace);
+            }
     }
 });
 
