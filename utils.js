@@ -24,9 +24,11 @@ function createInputField (name) {
     const label = document.createElement('label');
     label.id = `${name}__label`;
     label.setAttribute('for', `${name}__input`);
-    label.innerHTML = name;
+    const span = document.createElement('span');
+    span.innerHTML = name;
     const input = document.createElement('input');
     input.id = `${name}__input`;
+    label.appendChild(span);
     label.appendChild(input);
     return label;
 }
@@ -34,7 +36,7 @@ function createInputField (name) {
 function createDeleteButton () {
     const btn = document.createElement('button');
     btn.className = 'delete-option__btn';
-    btn.innerHTML = 'Delete';
+    btn.innerHTML = '&#x1F5D1;';
     btn.addEventListener('click', (event) => {
         const regex = event.target.parentElement;
         if (regex) {
@@ -50,6 +52,8 @@ export function createRegexOption (restoredData = {}) {
     // creates container
     const newEl = document.createElement('div');
     newEl.className = 'regex-option';
+    const formGroupEl = document.createElement('div');
+    formGroupEl.className = 'form-group';
     const nameInput = createInputField('name');
     const regexInput = createInputField('regex');
     const replaceInput = createInputField('replace');
@@ -63,9 +67,10 @@ export function createRegexOption (restoredData = {}) {
         replaceInput.querySelector('input').value = replace || '';
     }
 
-    newEl.appendChild(nameInput);
-    newEl.appendChild(regexInput);
-    newEl.appendChild(replaceInput);
+    formGroupEl.appendChild(nameInput);
+    formGroupEl.appendChild(regexInput);
+    formGroupEl.appendChild(replaceInput);
+    newEl.appendChild(formGroupEl)
     newEl.appendChild(deleteBtn);
 
     return newEl;

@@ -4,3 +4,71 @@
     appearance: none;
     -webkit-appearance: none;
 }
+
+button {
+    cursor: pointer;
+}
+
+#options {
+    position: relative;
+    padding-bottom: 48px;
+}
+
+.regex-options {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 12px;
+}
+
+.regex-option {
+    display: flex;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid lightgray;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-right: 1px solid lightgray;
+    padding-right: 16px;
+    margin-right: 16px;
+}
+
+.regex-option span {
+    width: 50px;
+}
+
+#name__label,
+#regex__label,
+#replace__label {
+    display: flex;
+    align-items: center;
+    text-transform:  capitalize;
+}
+
+#name__input,
+#regex__input,
+#replace__input {
+    margin-left: 6px;
+}
+
+#add {
+}
+
+#save {
+    position:  absolute;
+    bottom: 0;
+    width: 60px;
+    right: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#status {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+}

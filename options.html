@@ -5,9 +5,11 @@
     </head>
     <body>
         <div id="options">
+            <h3>Localhost</h3>
+            <p>Enable this option if you want to easily convert every domain into localhost url.</p>
             <div class="lh-option">
                 <label class="hostname-option" for="lh-input">
-                    Localhost option
+                    Enable
                     <input id="lh-input" type="checkbox">
                 </label>
                 <label class="port-option" for="port-input">
@@ -16,14 +18,15 @@
                 </label>
             </div>
 <!--            regex options container -->
+            <h3>Custom</h3>
+            <p>Add Regex replace option, you can add in regex field regex to match string and in replace to replace it with something. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#defining_the_regular_expression_in_replace" target="_blank">Replace with regular expression</a>
+            </p>
             <div class="regex-options"></div>
+            <button id="add">Add new Regex rule</button>
+
+            <div id="status"></div>
+            <button id="save">Save</button>
         </div>
-
-        <button id="add">Add new Regex rule</button>
-
-        <div id="status"></div>
-        <button id="save">Save</button>
-
         <script type="module" src="options.js"></script>
     </body>
 </html>
