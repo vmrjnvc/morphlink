@@ -20,7 +20,7 @@
     "commands"
   ],
   "commands": {
-    "run-localhost": {
+    "localhost": {
       "suggested_key": {
         "default": "Ctrl+Shift+L",
         "mac": "Command+Shift+L"

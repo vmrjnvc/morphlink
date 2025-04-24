@@ -143,3 +143,26 @@ export function setStatus (msg) {
         status.textContent = '';
     }, 750);
 }
+
+// create shortcut element to show set shortcut
+function createShortcut (shortcut)  {
+    const div = document.createElement('div');
+    div.className = 'shortcut';
+    div.innerHTML = shortcut;
+    return div
+}
+
+// create shortcuts container to show cheatsheet
+export function createShortcutsContainer (shortcutsArr)  {
+    const div = document.createElement('div');
+    div.className = 'shortcuts-wrapper';
+
+    shortcutsArr.forEach((shortcutObj) => {
+        if (shortcutObj.shortcut) {
+            const shortcut = createShortcut(shortcutObj.shortcut);
+            div.appendChild(shortcut);
+        }
+    })
+
+    return div
+}

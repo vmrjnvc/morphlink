@@ -2,7 +2,7 @@ import {openInLocalhost, executeRegexCommand, getOptionsAsync} from "./utils.js"
 
 chrome.commands.onCommand.addListener(async (command) => {
     switch (command) {
-        case 'run-localhost':
+        case 'localhost':
             openInLocalhost();
             break;
         default:
