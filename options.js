@@ -49,7 +49,6 @@ function saveOptions () {
         {
             lhOption: lhOptionEl.checked,
             portOption: portOptionEl.value,
-            portDisabled: portOptionEl.disabled,
             regexOptions: regexOptionsData
         },
         () => {
@@ -71,14 +70,11 @@ function restoreOptions () {
                     switch (key) {
                         case 'lhOption':
                             lhOptionEl.checked = items.lhOption;
+                            portOptionEl.disabled = !items.lhOption
                             break;
                         case 'portOption':
                             portOptionEl.value = items.portOption;
                             break;
-                        case 'portDisabled':
-                            portOptionEl.disabled = items.portDisabled;
-                            break;
-
                         case 'regexOptions': {
                             items.regexOptions.forEach((regexOption) => {
                                 addOption(regexOption);
