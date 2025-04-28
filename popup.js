@@ -1,10 +1,10 @@
 import {
-    openOptions,
+    createRegexCommand,
+    createShortcutsContainer,
+    executeRegexCommand,
     getOptionsAsync,
     openInLocalhost,
-    createRegexCommand,
-    executeRegexCommand,
-    createShortcutsContainer
+    openOptions
 } from "./utils.js";
 
 // html elements
@@ -16,16 +16,17 @@ const shortcutsContainerEl = document.querySelector('.shortcuts');
 // handles open options button click
 optionsBtn.addEventListener('click', openOptions);
 
-// handles click on open in localhost in new tab command
-localhostBtn.addEventListener('click', openInLocalhost);
+const options = await getOptionsAsync();
 
-// get regex commands from storage
-async function getRegexCommands () {
-    const options = await getOptionsAsync();
-
-    return options.regexOptions;
+if (!options.lhOption) {
+    localhostBtn.disabled = true;
+} else {
+    // handles click on open in localhost in new tab command
+    localhostBtn.addEventListener('click', openInLocalhost);
 }
-const regexCommands = await getRegexCommands();
+
+// get user regex commands
+const regexCommands = options.regexOptions
 
 // create buttons for regex commands and insert them in DOM
 regexCommands.forEach(cmd => {
