@@ -77,12 +77,14 @@ export function createRegexOption (restoredData = {}) {
 }
 
 export function createRegexCommand (name) {
+    const div =  document.createElement('div');
     const btn = document.createElement('button');
     btn.className = 'regex-command';
-    btn.classList.add('command-btn');
+    div.className = 'command-container';
     btn.innerHTML = name;
 
-    return btn;
+    div.appendChild(btn);
+    return div;
 }
 
 // open options page function
