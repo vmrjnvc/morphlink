@@ -1,5 +1,5 @@
 import {
-    createRegexCommand,
+    createCommand,
     executeRegexCommand,
     getOptionsAsync,
     openInLocalhost,
@@ -8,27 +8,30 @@ import {
 
 // html elements
 const optionsBtn = document.querySelector('#options-btn');
-const localhostBtn = document.querySelector('#localhost-btn');
 const commandsContainerEl = document.querySelector('.commands-container');
 
 // handles open options button click
 optionsBtn.addEventListener('click', openOptions);
 
 const options = await getOptionsAsync();
+const userShortcuts = await chrome.commands.getAll();
+console.log(userShortcuts);
+const localhostCommand = createCommand('Localhost', userShortcuts[1].shortcut);
+commandsContainerEl.appendChild(localhostCommand);
 
 if (!options.lhOption) {
-    localhostBtn.disabled = true;
+    localhostCommand.disabled = true;
 } else {
     // handles click on open in localhost in new tab command
-    localhostBtn.addEventListener('click', openInLocalhost);
+    localhostCommand.addEventListener('click', openInLocalhost);
 }
 
 // get user regex commands
 const regexCommands = options.regexOptions
 
 // create buttons for regex commands and insert them in DOM
-regexCommands.forEach(cmd => {
-    const regexCommand = createRegexCommand(cmd.name);
+regexCommands.forEach((cmd, index) => {
+    const regexCommand = createCommand(cmd.name, userShortcuts[index+2]?.shortcut);
     regexCommand.addEventListener('click', () => {
         executeRegexCommand(cmd['regex'], cmd['replace']);
     })
@@ -36,7 +39,7 @@ regexCommands.forEach(cmd => {
 })
 
 // get all shortcuts set by user and show them in popup
-chrome.commands.getAll((commands) => {
-    console.log(options);
-    console.log(commands);
-});
+// chrome.commands.getAll((commands) => {
+//     console.log(options);
+//     console.log(commands);
+// });

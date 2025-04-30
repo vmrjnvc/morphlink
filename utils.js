@@ -76,14 +76,17 @@ export function createRegexOption (restoredData = {}) {
     return newEl;
 }
 
-export function createRegexCommand (name) {
+export function createCommand (name, shortcut = '/') {
     const div =  document.createElement('div');
     const btn = document.createElement('button');
-    btn.className = 'regex-command';
     div.className = 'command-container';
     btn.innerHTML = name;
+    const span =  document.createElement('span');
+    span.className = 'shortcut';
+    span.innerHTML = shortcut
 
     div.appendChild(btn);
+    div.appendChild(span);
     return div;
 }
 
