@@ -36,7 +36,7 @@ function createInputField (name) {
 function createDeleteButton () {
     const btn = document.createElement('button');
     btn.className = 'delete-option__btn';
-    btn.innerHTML = '&#x1F5D1;';
+    btn.innerHTML = 'Remove';
     btn.addEventListener('click', (event) => {
         const regex = event.target.parentElement;
         if (regex) {
@@ -81,6 +81,7 @@ export function createCommand (name, shortcut = '/') {
     const btn = document.createElement('button');
     div.className = 'command-container';
     btn.innerHTML = name;
+    btn.className = 'command';
     const span =  document.createElement('span');
     span.className = 'shortcut';
     span.innerHTML = shortcut

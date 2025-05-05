@@ -58,7 +58,7 @@ button {
 
 .command-container {
     display: flex;
-    justify-content: space-evenly;
+    width:  100%;
 }
 
 .command-btn {
@@ -80,4 +80,13 @@ button {
     align-items: center;
     justify-content: space-around;
     margin-bottom: 8px;
+}
+
+.commands-section__title,
+.command,
+.shortcut {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
 }
