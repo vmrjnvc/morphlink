@@ -7,7 +7,7 @@ import {
 } from "./utils.js";
 
 // html elements
-const optionsBtn = document.querySelector('#options-btn');
+const optionsBtn = document.querySelector('.options');
 const commandsContainerEl = document.querySelector('.commands-container');
 
 // handles open options button click

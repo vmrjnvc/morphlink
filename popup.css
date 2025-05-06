@@ -16,12 +16,22 @@ button {
     text-wrap: wrap;
 }
 
+.divider {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: lightgray;
+}
+
 .popup {
     width: 300px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items:  center;
 }
 
 .title {
@@ -42,11 +52,13 @@ button {
     width: 100%;
 }
 
-.commands{
+.commands {
+    position:  relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin-bottom: 12px;
 }
 
 .commands-container {
@@ -54,31 +66,23 @@ button {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    gap: 8px;
 }
 
 .command-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
     width:  100%;
-}
-
-.command-btn {
-    background: lightgray;
-    border: 1px solid gray;
-    padding: 4px 8px;
-    margin-bottom: 4px;
-    width: 100%;
-    transition: background-color 0.25s ease;
-}
-
-.command-btn:hover {
-    background: lightblue;
 }
 
 .commands-section {
-    width:  100%;
-    display: flex;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    justify-content: space-around;
+    justify-items: center;
     margin-bottom: 8px;
 }
 
@@ -88,5 +92,20 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50%;
+}
+
+.commands-section__title {
+    text-decoration: underline gray;
+}
+
+.command {
+    padding: 4px 8px;
+    max-width: 100px;
+    background-color: gray;
+    color: white;
+}
+
+.options {
+    padding: 6px 10px;
+    background-color: lightblue;
 }
