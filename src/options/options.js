@@ -1,4 +1,4 @@
-import { setStatus, createRegexOption } from "./utils.js";
+import { setStatus, createRegexOption } from "../../utils.js";
 
 const saveBtn = document.getElementById("save");
 const addBtn  = document.getElementById("add");
