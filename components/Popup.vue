@@ -1,6 +1,6 @@
 <template>
     <div class="popup">
-        <h1 class="title">Morphlink</h1>
+        <h1 class="title text-3xl font-bold underline">Morphlink</h1>
 
         <div class="container">
             <div class="commands">

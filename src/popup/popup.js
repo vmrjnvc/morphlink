@@ -1,3 +1,6 @@
+import Vue from 'vue';
+import Popup from "../../components/Popup.vue";
+
 import {
     createCommand,
     executeRegexCommand,
@@ -43,3 +46,8 @@ regexCommands.forEach((cmd, index) => {
 //     console.log(options);
 //     console.log(commands);
 // });
+
+const app = new Vue({
+    el: '#app',
+    render: h => h(Popup)
+});
