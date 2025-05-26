@@ -1,10 +1,24 @@
 <html lang="en">
     <head>
         <title>Morphlink - Transfrom URL as you want and open morphed link in new tab</title>
-        <link rel="stylesheet" href="../../popup.css">
+        <link rel="stylesheet" href="../../assets/styles/popup.css">
     </head>
     <body>
-        <div id="app"></div>
+        <div class="popup">
+            <h1 class="title text-3xl font-bold underline">Morphlink</h1>
+
+            <div class="container">
+                <div class="commands">
+                    <div class="commands-section">
+                        <div class="commands-section__title">Commands</div>
+                        <div class="commands-section__title">Shortcuts</div>
+                    </div>
+                    <div class="commands-container"></div>
+                    <div class="divider"></div>
+                </div>
+            </div>
+            <button class="options">Options</button>
+        </div>
         <script type="module" src="popup.js"></script>
     </body>
 </html>
