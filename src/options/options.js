@@ -44,7 +44,15 @@ function saveOptions () {
         restoreOptions();
         return;
     }
-    const regexOptionsData = getRegexOptionsData()
+    const regexOptionsData = getRegexOptionsData();
+    console.log(regexOptionsData);
+    const hasEmptyFields = regexOptionsData.some(option => !option.name || !option['regex'] || !option['replace']);
+
+    if (hasEmptyFields) {
+        setStatus('All fields must be filled.');
+        return;
+    }
+
     chrome.storage.sync.set(
         {
             lhOption: lhOptionEl.checked,
