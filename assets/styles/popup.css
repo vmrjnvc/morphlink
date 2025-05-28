@@ -28,17 +28,10 @@ button {
 .popup {
     width: 300px;
     padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:  center;
 }
 
-.title {
-    margin-bottom: 12px;
-    font-size: 1rem;
-    line-height: 1.25rem;
-    text-align: center;
+.intro {
+    font-size: 14px;
 }
 
 .commands-label,
@@ -69,40 +62,15 @@ button {
     gap: 8px;
 }
 
-.command-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    align-items: center;
-    width:  100%;
-}
-
-.commands-section {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    justify-items: center;
-    margin-bottom: 8px;
-}
-
-.commands-section__title,
-.command,
-.shortcut {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.commands-section__title {
-    text-decoration: underline gray;
-}
-
 .command {
-    padding: 4px 8px;
-    max-width: 100px;
-    background-color: gray;
-    color: white;
+    border: 1px solid lightgray;
+    padding: 8px 4px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.command span {
+    margin-left: 8px;
 }
 
 .options {

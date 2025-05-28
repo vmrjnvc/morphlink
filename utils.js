@@ -76,19 +76,20 @@ export function createRegexOption (restoredData = {}) {
     return newEl;
 }
 
-export function createCommand (name, shortcut = '/') {
-    const div =  document.createElement('div');
+export function createCommand (name, shortcut) {
     const btn = document.createElement('button');
-    div.className = 'command-container';
     btn.innerHTML = name;
     btn.className = 'command';
-    const span =  document.createElement('span');
-    span.className = 'shortcut';
-    span.innerHTML = shortcut
 
-    div.appendChild(btn);
-    div.appendChild(span);
-    return div;
+    if (shortcut) {
+        const span =  document.createElement('span');
+        span.className = 'shortcut';
+        span.innerHTML = shortcut
+
+        btn.appendChild(span);
+    }
+
+    return btn;
 }
 
 // open options page function
