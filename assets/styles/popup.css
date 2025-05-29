@@ -10,7 +10,7 @@ body,
 button {
     outline: none;
     background: transparent;
-    border: none;
+    border: 1px solid lightgray;
     border-radius: 3px;
     cursor: pointer;
     text-wrap: wrap;
@@ -31,7 +31,17 @@ button {
 }
 
 .intro {
+    position: relative;
+    width: max-content;
+    margin-bottom: 8px;
     font-size: 14px;
+}
+
+.intro::after {
+    content: "\2935";
+    position: absolute;
+    right: -16px;
+    top: 6px;
 }
 
 .commands-label,
@@ -57,16 +67,19 @@ button {
 .commands-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
+    width: max-content;
     gap: 8px;
 }
 
 .command {
-    border: 1px solid lightgray;
-    padding: 8px 4px;
-    border-radius: 3px;
+    padding: 4px 12px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.command:hover {
+    border: 1px solid darkgray;
+    background-color: lightgray;
 }
 
 .command span {
@@ -74,6 +87,5 @@ button {
 }
 
 .options {
-    padding: 6px 10px;
-    background-color: lightblue;
+    font-size: 18px;
 }
