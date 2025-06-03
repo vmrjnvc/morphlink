@@ -30,12 +30,7 @@ Morphlink is a Chrome extension designed to streamline your development process 
     - Navigate to the options menu to set your desired port number and add any custom regex options.
     - Define shortcuts for quick access to the "Go to Localhost" function and custom regex options.
 
-3. **Navigating with Morphlink**:
-    - When you're on any webpage, click the "Go to Localhost" button.
-    - The extension will redirect you to your local server URL based on the current page's parameters and your configured settings.
-    - Use your configured keyboard shortcuts for quick navigation.
-
-4. **Adding Regex Options**:
+3. **Adding Regex Options**:
     - In the options menu, find the "Add Regex Option" button.
     - Fill in the fields for name, regex pattern, and replacement string.
     - Save your settings and use them to tailor your navigation.
@@ -45,14 +40,6 @@ Morphlink is a Chrome extension designed to streamline your development process 
 1. If you're browsing `example.com/about`, clicking the "Go to Localhost" button will take you to `localhost:3000/about`.
 2. If you added a regex that matches "about" and replaces it with "home", clicking the Morphlink button will redirect you to `localhost:3000/home`.
 
-## Contribution
-
-We welcome contributions from the community! Please fork the repository and submit a pull request with your enhancements and bug fixes.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgements
-
-Thank you for using Morphlink. We hope it enhances your development workflow significantly!
