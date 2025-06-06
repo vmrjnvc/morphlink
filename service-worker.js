@@ -10,8 +10,8 @@ chrome.commands.onCommand.addListener(async (command) => {
             const regexCommandNum = Number(command.split('-')[1]);
             const regexOption = options.regexOptions?.[regexCommandNum];
             if (regexOption) {
-                const {regex, replace} = regexOption;
-                executeRegexCommand(regex, replace);
+                const {pattern, replacement} = regexOption;
+                executeRegexCommand(pattern, replacement);
             }
     }
 });

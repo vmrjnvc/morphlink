@@ -34,7 +34,7 @@ regexCommands.forEach((cmd, index) => {
     console.log(userShortcuts[index+2]);
     const regexCommand = createCommand(cmd.name, userShortcuts[index+2]?.shortcut);
     regexCommand.addEventListener('click', () => {
-        executeRegexCommand(cmd['regex'], cmd['replace']);
+        executeRegexCommand(cmd.pattern, cmd.replacement);
     })
     commandsContainerEl.appendChild(regexCommand);
 })

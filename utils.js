@@ -55,21 +55,21 @@ export function createRegexOption (restoredData = {}) {
     const formGroupEl = document.createElement('div');
     formGroupEl.className = 'form-group';
     const nameInput = createInputField('name');
-    const regexInput = createInputField('regex');
-    const replaceInput = createInputField('replace');
+    const patternInput = createInputField('pattern');
+    const replacementInput = createInputField('replacement');
     const deleteBtn = createDeleteButton();
 
     // populate input values if restoredData exists
     if (restoredData) {
-        const { name, regex, replace } = restoredData;
+        const { name, pattern, replacement } = restoredData;
         nameInput.querySelector('input').value = name || '';
-        regexInput.querySelector('input').value = regex || '';
-        replaceInput.querySelector('input').value = replace || '';
+        patternInput.querySelector('input').value = pattern || '';
+        replacementInput.querySelector('input').value = replacement || '';
     }
 
     formGroupEl.appendChild(nameInput);
-    formGroupEl.appendChild(regexInput);
-    formGroupEl.appendChild(replaceInput);
+    formGroupEl.appendChild(patternInput);
+    formGroupEl.appendChild(replacementInput);
     newEl.appendChild(formGroupEl)
     newEl.appendChild(deleteBtn);
 
@@ -130,11 +130,11 @@ export async function openInLocalhost () {
     });
 }
 
-export async function executeRegexCommand (regexVal, replaceVal) {
+export async function executeRegexCommand (pattern, replacement) {
     const tab = await getCurrentTab();
 
-    const url = tab.url.replace(new RegExp(regexVal), replaceVal);
-    console.log(regexVal, replaceVal);
+    const url = tab.url.replace(new RegExp(pattern), replacement);
+    console.log(pattern, replacement);
     // creates new tab
     chrome.tabs.create({
         url,
@@ -156,20 +156,5 @@ function createShortcut (shortcut)  {
     const div = document.createElement('div');
     div.className = 'shortcut';
     div.innerHTML = shortcut;
-    return div
-}
-
-// create shortcuts container to show cheatsheet
-export function createShortcutsContainer (shortcutsArr)  {
-    const div = document.createElement('div');
-    div.className = 'shortcuts-wrapper';
-
-    shortcutsArr.forEach((shortcutObj) => {
-        if (shortcutObj.shortcut) {
-            const shortcut = createShortcut(shortcutObj.shortcut);
-            div.appendChild(shortcut);
-        }
-    })
-
     return div
 }

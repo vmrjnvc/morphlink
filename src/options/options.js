@@ -30,8 +30,8 @@ function getRegexOptionsData () {
     const regexOptionsArr = [];
     for (let i = 0; i < childElements.length; i++) {
         const child = childElements[i];
-        const [name, regex, replace] = child.querySelectorAll('input');
-        regexOptionsArr.push({name: name.value, regex: regex.value, replace: replace.value});
+        const [name, pattern, replacement] = child.querySelectorAll('input');
+        regexOptionsArr.push({name: name.value, pattern: pattern.value, replacement: replacement.value});
     }
 
     return regexOptionsArr;
@@ -46,7 +46,7 @@ function saveOptions () {
     }
     const regexOptionsData = getRegexOptionsData();
     console.log(regexOptionsData);
-    const hasEmptyFields = regexOptionsData.some(option => !option.name || !option['regex'] || !option['replace']);
+    const hasEmptyFields = regexOptionsData.some(option => !option.name || !option.pattern || !option.replacement);
 
     if (hasEmptyFields) {
         setStatus('All fields must be filled.');
