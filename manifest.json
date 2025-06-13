@@ -1,6 +1,6 @@
 {
   "name": "Morphlink",
-  "description": "Rewrite link with regex as you wish and open in new tab! Useful for Front-End developers to open links in localhost.",
+  "description": "Morphlink is a simple browser extension that allows you to quickly grab the URL from your current tab and open it in a new tab on your localhost. You can also create customized matching options with regex that meet your specific needs.",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
