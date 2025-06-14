@@ -1,6 +1,6 @@
 {
   "name": "Morphlink",
-  "description": "Morphlink is a simple browser extension that allows you to quickly grab the URL from your current tab and open it in a new tab on your localhost. You can also create customized matching options with regex that meet your specific needs.",
+  "description": "Morphlink takes your tab’s URL, morphs and opens it in a new tab, offering localhost option and customizable regex matching options.",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
