@@ -11,7 +11,7 @@ button {
 
 #options {
     position: relative;
-    padding-bottom: 48px;
+    padding-bottom: 36px;
 }
 
 .regex-options {
@@ -21,10 +21,14 @@ button {
     margin-bottom: 12px;
 }
 
+.regex-options:empty {
+    margin-bottom: 0;
+}
+
 .regex-option {
     display: flex;
     align-items: center;
-    padding-bottom: 24px;
+    padding-bottom: 16px;
     border-bottom: 1px solid lightgray;
 }
 
