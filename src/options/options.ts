@@ -1,14 +1,14 @@
-import { setStatus, createRegexOption } from "../../utils.js";
+import { setStatus, createRegexOption } from "../../utils.ts";
 
 const saveBtn = document.getElementById("save");
 const addBtn  = document.getElementById("add");
-const lhOptionEl = document.getElementById('lh-input');
-const portOptionEl = document.getElementById('port-input');
+const lhOptionEl = document.getElementById('lh-input') as HTMLInputElement;
+const portOptionEl = document.getElementById('port-input') as HTMLInputElement;
 const regexOptionsEl = document.querySelector('.regex-options');
 
 // default values
 lhOptionEl.checked = true;
-portOptionEl.value = 3000;
+portOptionEl.value = '3000';
 
 function togglePortAvailability() {
     portOptionEl.disabled = !lhOptionEl.checked;
@@ -84,7 +84,7 @@ function restoreOptions () {
                             portOptionEl.value = items.portOption;
                             break;
                         case 'regexOptions': {
-                            items.regexOptions.forEach((regexOption) => {
+                            items.regexOptions.forEach((regexOption: RegexOption) => {
                                 addOption(regexOption);
                             })
                             break;

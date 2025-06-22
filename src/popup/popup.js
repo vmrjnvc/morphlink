@@ -4,7 +4,7 @@ import {
     getOptionsAsync,
     openInLocalhost,
     openOptions
-} from "../../utils.js";
+} from "../../utils.ts";
 
 // html elements
 const optionsBtn = document.querySelector('.options');
