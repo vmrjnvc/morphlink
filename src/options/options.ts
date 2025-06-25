@@ -1,4 +1,5 @@
 import { setStatus, createRegexOption } from "../../utils.ts";
+import { RegexOption } from "../../utils.ts";
 
 const saveBtn = document.getElementById("save");
 const addBtn  = document.getElementById("add");
@@ -19,7 +20,7 @@ lhOptionEl.addEventListener('change', () => {
 })
 
 // add new command
-function addOption(restoredData) {
+function addOption(restoredData: RegexOption) {
     const regexOption = createRegexOption(restoredData);
     // console.log(regexOption);
     regexOptionsEl.appendChild(regexOption);

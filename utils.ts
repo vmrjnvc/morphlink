@@ -1,7 +1,7 @@
-type RegexOption = {
+export type RegexOption = {
   name: string;
-  pattern: string | RegExp;
-  replacement: string | RegExp;
+  pattern: string;
+  replacement: string;
 }
 
 // constants
@@ -70,9 +70,9 @@ export function createRegexOption (restoredData: RegexOption): HTMLDivElement {
   // populate input values if restoredData exists
   if (restoredData) {
     const { name, pattern, replacement } = restoredData;
-    nameInput.querySelector('input').value = name || '';
-    patternInput.querySelector('input').value = pattern || '';
-    replacementInput.querySelector('input').value = replacement || '';
+    nameInput.querySelector('input')!.value = name || '';
+    patternInput.querySelector('input')!.value = pattern || '';
+    replacementInput.querySelector('input')!.value = replacement || '';
   }
 
   formGroupEl.appendChild(nameInput);
@@ -84,7 +84,7 @@ export function createRegexOption (restoredData: RegexOption): HTMLDivElement {
   return newEl;
 }
 
-export function createCommand (name, shortcut) {
+export function createCommand (name: string, shortcut:string): HTMLButtonElement {
   const btn = document.createElement('button');
   btn.innerHTML = name;
   btn.className = 'command';
@@ -138,7 +138,7 @@ export async function openInLocalhost () {
   });
 }
 
-export async function executeRegexCommand (pattern, replacement) {
+export async function executeRegexCommand (pattern: string, replacement: string) {
   const tab = await getCurrentTab();
 
   const url = tab.url.replace(new RegExp(pattern), replacement);
@@ -150,7 +150,7 @@ export async function executeRegexCommand (pattern, replacement) {
 }
 
 // Update status to let user know options were saved or not.
-export function setStatus (msg) {
+export function setStatus (msg: string) {
   const status = document.getElementById('status');
 
   status.textContent = msg;
@@ -160,7 +160,7 @@ export function setStatus (msg) {
 }
 
 // create shortcut element to show set shortcut
-function createShortcut (shortcut)  {
+function createShortcut (shortcut: string)  {
   const div = document.createElement('div');
   div.className = 'shortcut';
   div.innerHTML = shortcut;
