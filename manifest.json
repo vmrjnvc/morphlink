@@ -1,7 +1,7 @@
 {
   "name": "Morphlink",
   "description": "Morphlink takes your tab’s URL, morphs and opens it in a new tab, offering localhost option and customizable regex matching options.",
-  "version": "1.0",
+  "version": "1.0.1",
   "manifest_version": 3,
   "action": {
     "default_popup": "src/popup/popup.html",
