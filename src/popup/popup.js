@@ -15,11 +15,10 @@ optionsBtn.addEventListener('click', openOptions);
 
 const options = await getOptionsAsync();
 const userShortcuts = await chrome.commands.getAll();
-console.log(userShortcuts);
 const localhostCommand = createCommand('Localhost', userShortcuts[1].shortcut);
 commandsContainerEl.appendChild(localhostCommand);
 
-if (!options.lhOption) {
+if ('lhOption' in options && !options.lhOption) {
     localhostCommand.disabled = true;
 } else {
     // handles click on open in localhost in new tab command
@@ -30,8 +29,7 @@ if (!options.lhOption) {
 const regexCommands = options.regexOptions
 
 // create buttons for regex commands and insert them in DOM
-regexCommands.forEach((cmd, index) => {
-    console.log(userShortcuts[index+2]);
+regexCommands?.forEach((cmd, index) => {
     const regexCommand = createCommand(cmd.name, userShortcuts[index+2]?.shortcut);
     regexCommand.addEventListener('click', () => {
         executeRegexCommand(cmd.pattern, cmd.replacement);

@@ -1,4 +1,4 @@
-import { setStatus, createRegexOption } from "../../utils.js";
+import { setStatus, createRegexOption, DEFAULT_PORT } from "../../utils.js";
 
 const saveBtn = document.getElementById("save");
 const addBtn  = document.getElementById("add");
@@ -8,7 +8,7 @@ const regexOptionsEl = document.querySelector('.regex-options');
 
 // default values
 lhOptionEl.checked = true;
-portOptionEl.value = 3000;
+portOptionEl.value = DEFAULT_PORT;
 
 function togglePortAvailability() {
     portOptionEl.disabled = !lhOptionEl.checked;
@@ -39,13 +39,12 @@ function getRegexOptionsData () {
 
 // Saves options to chrome.storage
 function saveOptions () {
-    if (!Number(portOptionEl.value)) {
+    if (!portOptionEl.value) {
         setStatus('Invalid port value.');
         restoreOptions();
         return;
     }
     const regexOptionsData = getRegexOptionsData();
-    console.log(regexOptionsData);
     const hasEmptyFields = regexOptionsData.some(option => !option.name || !option.pattern || !option.replacement);
 
     if (hasEmptyFields) {

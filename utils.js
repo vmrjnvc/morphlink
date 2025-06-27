@@ -1,6 +1,7 @@
 // constants
-const OPTIONS_PAGE = 'options.html'
-const LOCALHOST_URL = 'http://localhost:'
+const OPTIONS_PAGE = 'options.html';
+const LOCALHOST_URL = 'http://localhost:';
+export const DEFAULT_PORT = '3000';
 
 // get everything after domain from url passed to func
 export function getPathAfterDomain(urlString) {
@@ -122,7 +123,7 @@ export async function openInLocalhost () {
     const res = await getOptionsAsync();
 
     // creates url from localhost constant, port value from user options and active tab following the domain
-    const url = LOCALHOST_URL + res.portOption + getPathAfterDomain(tab.url);
+    const url = LOCALHOST_URL + (res.portOption || DEFAULT_PORT) + getPathAfterDomain(tab.url);
 
     // creates new tab
     chrome.tabs.create({
