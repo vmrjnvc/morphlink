@@ -7,6 +7,7 @@ export type RegexOption = {
 // constants
 const OPTIONS_PAGE = 'options.html'
 const LOCALHOST_URL = 'http://localhost:'
+export const DEFAULT_PORT = '3000'
 
 // get everything after domain from url passed to func
 export function getPathAfterDomain(urlString: string): string {
@@ -130,7 +131,7 @@ export async function openInLocalhost () {
   const res = await getOptionsAsync();
 
   // creates url from localhost constant, port value from user options and active tab following the domain
-  const url = LOCALHOST_URL + res.portOption + getPathAfterDomain(tab.url);
+  const url = LOCALHOST_URL + res.portOption + getPathAfterDomain(tab.url || '');
 
   // creates new tab
   chrome.tabs.create({
@@ -141,7 +142,7 @@ export async function openInLocalhost () {
 export async function executeRegexCommand (pattern: string, replacement: string) {
   const tab = await getCurrentTab();
 
-  const url = tab.url.replace(new RegExp(pattern), replacement);
+  const url = tab.url?.replace(new RegExp(pattern), replacement);
   console.log(pattern, replacement);
   // creates new tab
   chrome.tabs.create({
@@ -151,7 +152,7 @@ export async function executeRegexCommand (pattern: string, replacement: string)
 
 // Update status to let user know options were saved or not.
 export function setStatus (msg: string) {
-  const status = document.getElementById('status');
+  const status = document.getElementById('status')!;
 
   status.textContent = msg;
   setTimeout(() => {

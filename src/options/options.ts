@@ -1,5 +1,5 @@
-import { setStatus, createRegexOption, DEFAULT_PORT } from "../../utils.ts";
-import { RegexOption } from "../../utils.ts";
+import { setStatus, createRegexOption, DEFAULT_PORT } from "../utils.ts";
+import { RegexOption } from "../utils.ts";
 
 const saveBtn = document.getElementById("save");
 const addBtn  = document.getElementById("add");
@@ -23,11 +23,11 @@ lhOptionEl.addEventListener('change', () => {
 function addOption(restoredData: RegexOption) {
     const regexOption = createRegexOption(restoredData);
     // console.log(regexOption);
-    regexOptionsEl.appendChild(regexOption);
+    regexOptionsEl?.appendChild(regexOption);
 }
 
 function getRegexOptionsData () {
-    const childElements = regexOptionsEl.children;
+    const childElements = regexOptionsEl!.children;
     const regexOptionsArr = [];
     for (let i = 0; i < childElements.length; i++) {
         const child = childElements[i];
@@ -98,5 +98,5 @@ function restoreOptions () {
 }
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
-saveBtn.addEventListener('click', saveOptions);
-addBtn.addEventListener('click', addOption);
+saveBtn?.addEventListener('click', saveOptions);
+addBtn?.addEventListener('click', () => addOption);
