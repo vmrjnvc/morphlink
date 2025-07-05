@@ -1,4 +1,21 @@
 {
+  "name": "morphlink",
+  "version": "1.0.0",
+  "description": "Morphlink is a Chrome extension designed to streamline your development process by allowing you to quickly navigate from any webpage to your local development server. Simplifying your workflow, Morphlink helps you easily transition between remote sites and your local environment.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vmrjnvc/morphlink.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vmrjnvc/morphlink/issues"
+  },
+  "homepage": "https://github.com/vmrjnvc/morphlink#readme",
   "devDependencies": {
     "@types/chrome": "^0.0.329",
     "typescript": "^5.8.3"
