@@ -85,7 +85,7 @@ export function createRegexOption (restoredData: RegexOption): HTMLDivElement {
   return newEl;
 }
 
-export function createCommand (name: string, shortcut:string): HTMLButtonElement {
+export function createCommand (name: string, shortcut:string | undefined): HTMLButtonElement {
   const btn = document.createElement('button');
   btn.innerHTML = name;
   btn.className = 'command';
@@ -161,9 +161,9 @@ export function setStatus (msg: string) {
 }
 
 // create shortcut element to show set shortcut
-function createShortcut (shortcut: string)  {
-  const div = document.createElement('div');
-  div.className = 'shortcut';
-  div.innerHTML = shortcut;
-  return div
-}
+// function createShortcut (shortcut: string)  {
+//   const div = document.createElement('div');
+//   div.className = 'shortcut';
+//   div.innerHTML = shortcut;
+//   return div
+// }
