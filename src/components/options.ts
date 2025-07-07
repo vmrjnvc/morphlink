@@ -1,4 +1,4 @@
-import { setStatus, createRegexOption, DEFAULT_PORT, type RegexOption } from "../../utils";
+import { setStatus, createRegexOption, DEFAULT_PORT, type RegexOption } from "../utils";
 
 const saveBtn = document.getElementById("save");
 const addBtn  = document.getElementById("add");
