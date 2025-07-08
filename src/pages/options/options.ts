@@ -1,3 +1,4 @@
+import './options.css';
 import { setStatus, createRegexOption, DEFAULT_PORT, type RegexOption } from "../../utils";
 
 const saveBtn = document.getElementById("save");

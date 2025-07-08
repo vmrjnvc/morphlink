@@ -1,3 +1,4 @@
+import './popup.css';
 import {
     createCommand,
     executeRegexCommand,
