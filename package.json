@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/vmrjnvc/morphlink#readme",
   "devDependencies": {
+    "@crxjs/vite-plugin": "^2.0.2",
     "@types/chrome": "^0.0.329",
     "@types/node": "^24.0.10",
     "typescript": "^5.8.3",

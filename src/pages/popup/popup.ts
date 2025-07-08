@@ -5,7 +5,7 @@ import {
     openInLocalhost,
     openOptions,
     type RegexOption
-} from "../utils.ts";
+} from "../../utils.ts";
 
 // html elements
 const optionsBtn = document.querySelector('.options')!;

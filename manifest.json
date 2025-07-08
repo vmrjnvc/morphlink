@@ -4,7 +4,7 @@
   "version": "1.0.1",
   "manifest_version": 3,
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "./src/pages/popup/popup.html",
     "default_icon": "images/icon-128.png"
   },
   "icons": {
@@ -42,7 +42,7 @@
     "type": "module"
   },
   "options_ui": {
-    "page": "options.html",
+    "page": "./src/pages/options/options.html",
     "open_in_tab": false
   }
 }

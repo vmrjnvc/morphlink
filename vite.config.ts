@@ -1,16 +1,7 @@
 import { defineConfig } from 'vite'
+import { crx } from '@crxjs/vite-plugin'
+import manifest from './manifest.json'
 
 export default defineConfig({
-    build: {
-        rollupOptions: {
-            input: {
-                background: "./src/background.ts",
-                popup: "./src/components/popup.ts",
-                options: "./src/components/options.ts"
-            },
-            output: {
-                entryFileNames: `src/[name].js`,
-            },
-        }
-    },
-});
+    plugins: [crx({ manifest })],
+})
