@@ -9,8 +9,8 @@ import {
 } from "../../utils.ts";
 
 // html elements
-const optionsBtn = document.querySelector('.options')!;
-const commandsContainerEl = document.querySelector('.commands-container')!;
+const optionsBtn = document.querySelector('.options')! as HTMLButtonElement;
+const commandsContainerEl = document.querySelector('.commands-container')! as HTMLDivElement;
 
 // handles open options button click
 optionsBtn.addEventListener('click', openOptions);

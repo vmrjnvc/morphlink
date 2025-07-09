@@ -1,32 +1,29 @@
 import './options.css';
 import { setStatus, createRegexOption, DEFAULT_PORT, type RegexOption } from "../../utils";
 
-const saveBtn = document.getElementById("save");
-const addBtn  = document.getElementById("add");
+const saveBtn = document.getElementById("save")! as HTMLButtonElement;
+const addBtn  = document.getElementById("add")! as HTMLButtonElement;
 const lhOptionEl = document.getElementById('lh-input') as HTMLInputElement;
 const portOptionEl = document.getElementById('port-input') as HTMLInputElement;
-const regexOptionsEl = document.querySelector('.regex-options');
+const regexOptionsEl = document.querySelector('.regex-options')! as HTMLDivElement;
 
 // default values
 lhOptionEl.checked = true;
 portOptionEl.value = DEFAULT_PORT;
 
-function togglePortAvailability() {
+function togglePortAvailability(): void {
     portOptionEl.disabled = !lhOptionEl.checked;
 }
 
-lhOptionEl.addEventListener('change', () => {
-    togglePortAvailability()
-})
+lhOptionEl.addEventListener('change', togglePortAvailability)
 
 // add new command
-function addOption(restoredData: RegexOption) {
+function addOption(restoredData?: RegexOption): void {
     const regexOption = createRegexOption(restoredData);
-    // console.log(regexOption);
-    regexOptionsEl?.appendChild(regexOption);
+    regexOptionsEl.appendChild(regexOption);
 }
 
-function getRegexOptionsData () {
+function getRegexOptionsData (): RegexOption[] {
     const childElements = regexOptionsEl!.children;
     const regexOptionsArr = [];
     for (let i = 0; i < childElements.length; i++) {
@@ -39,7 +36,7 @@ function getRegexOptionsData () {
 }
 
 // Saves options to chrome.storage
-function saveOptions () {
+function saveOptions (): void {
     if (!portOptionEl.value) {
         setStatus('Invalid port value.');
         restoreOptions();
@@ -67,7 +64,7 @@ function saveOptions () {
 
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
-function restoreOptions () {
+function restoreOptions (): void {
     chrome.storage.sync.get(
         null,
         (items) => {
@@ -98,5 +95,5 @@ function restoreOptions () {
 }
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
-saveBtn?.addEventListener('click', saveOptions);
-addBtn?.addEventListener('click', () => addOption);
+saveBtn.addEventListener('click', saveOptions);
+addBtn.addEventListener('click', () => addOption());
