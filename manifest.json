@@ -38,7 +38,7 @@
     }
   },
   "background": {
-    "service_worker": "src/background.js",
+    "service_worker": "src/background.ts",
     "type": "module"
   },
   "options_ui": {
