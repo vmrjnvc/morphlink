@@ -1,14 +1,16 @@
+import './popup.css';
 import {
     createCommand,
     executeRegexCommand,
     getOptionsAsync,
     openInLocalhost,
-    openOptions
-} from "../../utils.js";
+    openOptions,
+    type RegexOption
+} from "../../utils.ts";
 
 // html elements
-const optionsBtn = document.querySelector('.options');
-const commandsContainerEl = document.querySelector('.commands-container');
+const optionsBtn = document.querySelector('.options')! as HTMLButtonElement;
+const commandsContainerEl = document.querySelector('.commands-container')! as HTMLDivElement;
 
 // handles open options button click
 optionsBtn.addEventListener('click', openOptions);
@@ -29,7 +31,7 @@ if ('lhOption' in options && !options.lhOption) {
 const regexCommands = options.regexOptions
 
 // create buttons for regex commands and insert them in DOM
-regexCommands?.forEach((cmd, index) => {
+regexCommands?.forEach((cmd: RegexOption, index: number) => {
     const regexCommand = createCommand(cmd.name, userShortcuts[index+2]?.shortcut);
     regexCommand.addEventListener('click', () => {
         executeRegexCommand(cmd.pattern, cmd.replacement);

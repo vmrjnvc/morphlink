@@ -30,8 +30,7 @@ button, a {
     font-size: 14px;
 }
 
-.intro::after {
-    content: "\2935";
+.intro-arrow {
     position: absolute;
     right: -16px;
     top: 6px;

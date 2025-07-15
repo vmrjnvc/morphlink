@@ -1,32 +1,30 @@
-import { setStatus, createRegexOption, DEFAULT_PORT } from "../../utils.js";
+import './options.css';
+import { setStatus, createRegexOption, DEFAULT_PORT, type RegexOption } from "../../utils";
 
-const saveBtn = document.getElementById("save");
-const addBtn  = document.getElementById("add");
-const lhOptionEl = document.getElementById('lh-input');
-const portOptionEl = document.getElementById('port-input');
-const regexOptionsEl = document.querySelector('.regex-options');
+const saveBtn = document.getElementById("save")! as HTMLButtonElement;
+const addBtn  = document.getElementById("add")! as HTMLButtonElement;
+const lhOptionEl = document.getElementById('lh-input') as HTMLInputElement;
+const portOptionEl = document.getElementById('port-input') as HTMLInputElement;
+const regexOptionsEl = document.querySelector('.regex-options')! as HTMLDivElement;
 
 // default values
 lhOptionEl.checked = true;
 portOptionEl.value = DEFAULT_PORT;
 
-function togglePortAvailability() {
+function togglePortAvailability(): void {
     portOptionEl.disabled = !lhOptionEl.checked;
 }
 
-lhOptionEl.addEventListener('change', () => {
-    togglePortAvailability()
-})
+lhOptionEl.addEventListener('change', togglePortAvailability)
 
 // add new command
-function addOption(restoredData) {
+function addOption(restoredData?: RegexOption): void {
     const regexOption = createRegexOption(restoredData);
-    // console.log(regexOption);
     regexOptionsEl.appendChild(regexOption);
 }
 
-function getRegexOptionsData () {
-    const childElements = regexOptionsEl.children;
+function getRegexOptionsData (): RegexOption[] {
+    const childElements = regexOptionsEl!.children;
     const regexOptionsArr = [];
     for (let i = 0; i < childElements.length; i++) {
         const child = childElements[i];
@@ -38,7 +36,7 @@ function getRegexOptionsData () {
 }
 
 // Saves options to chrome.storage
-function saveOptions () {
+function saveOptions (): void {
     if (!portOptionEl.value) {
         setStatus('Invalid port value.');
         restoreOptions();
@@ -66,7 +64,7 @@ function saveOptions () {
 
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
-function restoreOptions () {
+function restoreOptions (): void {
     chrome.storage.sync.get(
         null,
         (items) => {
@@ -83,7 +81,7 @@ function restoreOptions () {
                             portOptionEl.value = items.portOption;
                             break;
                         case 'regexOptions': {
-                            items.regexOptions.forEach((regexOption) => {
+                            items.regexOptions.forEach((regexOption: RegexOption) => {
                                 addOption(regexOption);
                             })
                             break;
@@ -98,4 +96,4 @@ function restoreOptions () {
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
 saveBtn.addEventListener('click', saveOptions);
-addBtn.addEventListener('click', addOption);
+addBtn.addEventListener('click', () => addOption());

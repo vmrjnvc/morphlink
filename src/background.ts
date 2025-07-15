@@ -1,4 +1,4 @@
-import {openInLocalhost, executeRegexCommand, getOptionsAsync} from "./utils.js";
+import {openInLocalhost, executeRegexCommand, getOptionsAsync} from "./utils.ts";
 
 chrome.commands.onCommand.addListener(async (command) => {
     switch (command) {
