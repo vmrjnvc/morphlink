@@ -125,7 +125,7 @@ export async function openInLocalhost(): Promise<void> {
 
     // creates url from localhost constant, port value from user options and active tab following the domain
     const url =
-        LOCALHOST_URL + res && res?.portOption + getPathAfterDomain(tab.url || "");
+        LOCALHOST_URL + (res && res?.portOption) + getPathAfterDomain(tab.url || "");
 
     // creates new tab
     chrome.tabs.create({
