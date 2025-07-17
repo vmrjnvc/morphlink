@@ -1,5 +1,7 @@
 import './options.css';
-import { setStatus, createRegexOption, DEFAULT_PORT, type RegexOption } from "../../utils";
+import { setStatus, createRegexOption } from "../../utils";
+import { DEFAULT_PORT } from '../../constants';
+import type { RegexOption } from '../../types';
 
 const saveBtn = document.getElementById("save")! as HTMLButtonElement;
 const addBtn  = document.getElementById("add")! as HTMLButtonElement;

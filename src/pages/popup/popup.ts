@@ -4,9 +4,9 @@ import {
     executeRegexCommand,
     getOptionsAsync,
     openInLocalhost,
-    openOptions,
-    type RegexOption
+    openOptions
 } from "../../utils.ts";
+import type { RegexOption } from '../../types.ts';
 
 // html elements
 const optionsBtn = document.querySelector('.options')! as HTMLButtonElement;

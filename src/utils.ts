@@ -1,13 +1,5 @@
-export type RegexOption = {
-    name: string;
-    pattern: string;
-    replacement: string;
-};
-
-// constants
-const OPTIONS_PAGE = "options.html";
-const LOCALHOST_URL = "http://localhost:";
-export const DEFAULT_PORT = "3000";
+import { LOCALHOST_URL, OPTIONS_PAGE } from "./constants";
+import type { RegexOption } from "./types";
 
 // get everything after domain from url passed to func
 export function getPathAfterDomain(urlString: string): string {
