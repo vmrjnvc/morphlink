@@ -1,4 +1,4 @@
-import { LOCALHOST_URL, OPTIONS_PAGE } from "./constants";
+import { LOCALHOST_URL, OPTIONS_PAGE, DEFAULT_PORT } from "./constants";
 import type { RegexOption } from "./types";
 
 // get everything after domain from url passed to func
@@ -122,10 +122,10 @@ export async function openInLocalhost(): Promise<void> {
     const tab = await getCurrentTab();
     // gets user options data
     const res = await getOptionsAsync();
-
+    const port = res?.portOption || DEFAULT_PORT;
     // creates url from localhost constant, port value from user options and active tab following the domain
     const url =
-        LOCALHOST_URL + (res && res?.portOption) + getPathAfterDomain(tab.url || "");
+        LOCALHOST_URL + port + getPathAfterDomain(tab.url || "");
 
     // creates new tab
     chrome.tabs.create({
